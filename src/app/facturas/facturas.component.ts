@@ -8,9 +8,7 @@ import { Factura } from '../model/facturas';
 	styleUrls: ['./facturas.component.css']
 })
 export class FacturasComponent {
-	private _facturaService: FacturaService;
-	constructor(facturaService: FacturaService) {
-		this._facturaService = facturaService
+	constructor(private facturaService: FacturaService) {
 	}
 
 	factura: Factura = new Factura;
@@ -21,21 +19,21 @@ export class FacturasComponent {
 	}
 
 	crear(): void {
-		this._facturaService.create(this.factura);
+		this.facturaService.create(this.factura);
 		this.factura = new Factura;
 	}
 	leer(): Factura | undefined {
-		return this._facturaService.read(this.factura.idFactura);
+		return this.facturaService.read(this.factura.idFactura);
 	}
 	actualizar(idFactura: number = this.factura.idFactura, factura: Factura = this.factura): void {
-		this._facturaService.update(idFactura, factura);
+		this.facturaService.update(idFactura, factura);
 		this.factura = new Factura;
 	}
 	borrar(factura: Factura = this.factura): void {
-		this._facturaService.delete(factura.idFactura);
+		this.facturaService.delete(factura.idFactura);
 	}
 
 	get facturas(): Factura[] {
-		return this._facturaService.facturas;
+		return this.facturaService.facturas;
 	}
 }
