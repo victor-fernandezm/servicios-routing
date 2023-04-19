@@ -1,0 +1,28 @@
+<label for="idcli">ID Cliente:</label><input type="number" name="" id="idcli" [(ngModel)]="factura.idCliente"><br><label for="idfac">ID Factura:</label><input type="number" name="" id="idfac" [(ngModel)]="factura.idFactura"><br><label for="total">Total Factura:</label><input type="number" name="" id="total" [(ngModel)]="factura.totalFactura"><br><label for="iva">IVA:</label><input type="number" name="" id="iva" [(ngModel)]="factura.iva"><br>
+
+<button (click)="updateSalida(crear())">Crear Factura</button>
+<button (click)="updateSalida(leer())">Leer</button>
+<button (click)="updateSalida(actualizar())">Actualizar</button>
+<button (click)="updateSalida(borrar())">Borrar</button>
+
+<pre>{{salidaFuncion}}</pre>
+
+<table>
+    <tr>
+        <th>ID Cliente</th>
+        <th>ID Factura</th>
+        <th>Total Factura</th>
+        <th>IVA</th>
+        <th>Operaciones</th>
+    </tr>
+    <tr *ngFor="let f of facturas">
+        <td>{{f.idCliente}}</td>
+        <td>{{f.idFactura}}</td>
+        <td>{{f.totalFactura}}</td>
+        <td>{{f.iva}}</td>
+        <td>
+            <button (click)="actualizar(f.idFactura)">&#x270e;</button>
+            <button (click)="borrar(f)">&cross;</button>
+        </td>
+    </tr>
+</table>
